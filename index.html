@@ -1,129 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adarsh the Great</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="stars.css">
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url('land.jpg') no-repeat center center/cover, #000000; /* Land image as background */
-        background-blend-mode: overlay;
-        color: #ffffff;
-        margin: 0;
-        text-align: center;
-        transition: background-color 0.3s, background-blend-mode 0.3s, background 0.3s;
-    }
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('land.jpg') no-repeat center center/cover, #000000;
+            /* Land image as background */
+            background-blend-mode: overlay;
+            color: #ffffff;
+            margin: 0;
+            text-align: center;
+            transition: background-color 0.3s, background-blend-mode 0.3s, background 0.3s;
+        }
 
-    .circle {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: #020202; /* Initially dark */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 10%; /* Adjust this for top-right positioning */
-        right: 10%;
-        transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
-        z-index: 2;
-        opacity: 1; /* Initially visible */
-    }
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #020202;
+            /* Initially dark */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 10%;
+            /* Adjust this for top-right positioning */
+            right: 10%;
+            transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
+            z-index: 2;
+            opacity: 1;
+            /* Initially visible */
+        }
 
-    .circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        opacity: 0; /* Initially hidden */
-        transition: opacity 0.3s;
-    }
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            opacity: 0;
+            /* Initially hidden */
+            transition: opacity 0.3s;
+        }
 
-    .circle.glow {
-        box-shadow: 0 0 30px rgba(255, 255, 255, 1); /* Increased glow effect */
-    }
+        .circle.glow {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+            /* Increased glow effect */
+        }
 
-    .message {
-    font-size: 18px;
-    text-align: center; /* Center text horizontally */
-    padding: 10px;
-    border-radius: 5px;
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 35%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for exact centering */
-    background-color: rgba(173, 55, 212, 0.5); /* Semi-transparent background */
-    z-index: 5;
-}
+        .message {
+            font-size: 18px;
+            text-align: center;
+            /* Center text horizontally */
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            /* Center vertically */
+            left: 35%;
+            /* Center horizontally */
+            transform: translate(-50%, -50%);
+            /* Adjust for exact centering */
+            background-color: rgba(173, 55, 212, 0.5);
+            /* Semi-transparent background */
+            z-index: 5;
+        }
 
 
-    .buttons {
-        display: flex;
-        flex-direction: row;
-        margin-top: 25%;
-        gap: 50px;
-        z-index: 1;
-    }
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            margin-top: 25%;
+            gap: 50px;
+            z-index: 1;
+        }
 
-    .button {
-        padding: 10px 20px;
-        background-color: #b92a50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+        .button {
+            padding: 10px 20px;
+            background-color: #b92a50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .button:hover {
-        background-color: #ed3496;
-    }
+        .button:hover {
+            background-color: #ed3496;
+        }
 
-    .stars, .twinkling {
-        width: 100%;
-        height: 100%; /* Full height for stars and twinkling */
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0; /* Initially hidden */
-        transition: opacity 0.3s;
-    }
+        .stars,
+        .twinkling {
+            width: 100%;
+            height: 100%;
+            /* Full height for stars and twinkling */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            /* Initially hidden */
+            transition: opacity 0.3s;
+        }
 
-    .dialogue {
-        position: absolute;
-        top: 98%;
-        right: 10%;
-        background-color: rgba(173, 55, 212, 0.801);
-        color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        display: none;
-        z-index: 3;
-    }
-    /* Hide content on mobile devices */
-@media only screen and (max-width: 768px) {
-    body {
-        display: none;
-    }
+        .dialogue {
+            position: absolute;
+            top: 98%;
+            right: 10%;
+            background-color: rgba(173, 55, 212, 0.801);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            z-index: 3;
+        }
 
-    .mobile-restriction {
-        display: block;
-        text-align: center;
-        margin-top: 20%;
-        font-size: 24px;
-        color: red;
-    }
-}
+        /* Hide content on mobile devices */
+        @media only screen and (max-width: 768px) {
+            body {
+                display: none;
+            }
 
-</style>
+            .mobile-restriction {
+                display: block;
+                text-align: center;
+                margin-top: 20%;
+                font-size: 24px;
+                color: red;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -137,104 +153,119 @@
         <button class="button" id="increase-btn">Kr rhi hu tham ja</button>
     </div>
 
-    <!-- Bootstrap JS (optional for Bootstrap features) -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    const body = document.body;
-    const circle = document.getElementById('circle');
-    const specialImage = document.getElementById('special-image');
-    const message = document.getElementById('message');
-    const increaseBtn = document.getElementById('increase-btn');
-    const decreaseBtn = document.getElementById('decrease-btn');
-    const stars = document.querySelector('.stars');
-    const twinkling = document.querySelector('.twinkling');
-    const dialogue = document.getElementById('dialogue');
+    <!-- Centered Image Container -->
+    <div id="final-image-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <img id="final-image" src="" alt="Final Decision" style="width: 300px; height: auto;">
+    </div>
 
-    const messages = [
-        "Yrr... Kitta andhera hai thodi roshni kr de 🥹",
-        "Ab bhi andhera hai, thoda or badha de 🥹",
-        "Dikh to ab bhi kuch nhi rha, or badha na 😑",
-        "Areyy wahh... dekh sb dikh rha hai... kitta pyara hai... dekhio thoda aur badhta hai kyaa 🥰",
-        "CHAAND ESA HO TO RAAT BHAR DEKHNE ME KESI SHARAM..!!! 😍"
-    ];
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
 
-    const increaseTexts = [
-        "Kr rhi hu tham ja 😤",
-        "Thik hai rukk, badhati hu 😑",
-        "Baat to shi hai, rukk badhati hu 😯",
-        "Shi keh rha hai, tu na dikhe bs, aur badha deti hu 🤧",
-        "Etta cutie project, tujhe to 2 eclairs khilaungi🥹"
-    ];
+    <script>
+        const body = document.body;
+        const circle = document.getElementById('circle');
+        const specialImage = document.getElementById('special-image');
+        const message = document.getElementById('message');
+        const increaseBtn = document.getElementById('increase-btn');
+        const decreaseBtn = document.getElementById('decrease-btn');
+        const stars = document.querySelector('.stars');
+        const twinkling = document.querySelector('.twinkling');
+        const dialogue = document.getElementById('dialogue');
+        const finalImageContainer = document.getElementById('final-image-container');
+        const finalImage = document.getElementById('final-image');
 
-    const decreaseTexts = [
-        "Nhi kr rhi jaa 😒",
-        "Nhi ab nhi badha rhi 😒",
-        "Nhi badha rhi, khi tu dikh gya to... chiiii 🤮",
-        "Nhi ab nhi ab to tu dikhega mood kharab ho jayega..!! 😰",
-        "Aaj ke baad esi harkat ki to kutta bnaa ke marungi... 🤬"
-    ];
+        const messages = [
+            "Yrr... Kitta andhera hai thodi roshni kr do 🥹",
+            "Ab bhi andhera hai yrr, thoda or badha do 🥹",
+            "Dikh to ab bhi kuch nhi rha, or badhaao na 😑",
+            "Areyy wahh... dekho sb dikh rha hai... kitta pyara hai... dekhna zara aur badhta hai kyaa 🥰",
+            "Areyy wahhh...!! 😍"
+        ];
 
-    let currentStep = 0;
+        const increaseTexts = [
+            "Kr rhi hu ruko zara 😤",
+            "Thik hai ruko, badhati hu 😑",
+            "Baat to shi hai, rukko badhati hu 😯",
+            "Shi keh rhe ho, bs tum na dikh jana, aur badha deti hu 🤧",
+            "Etta cutie project, tumhe to 2 eclairs khilaungi 🥹"
+        ];
 
-    const updateVisuals = (level) => {
-        const brightness = 20 + 15 * level;
-        body.style.backgroundColor = `hsl(0, 0%, ${brightness}%)`;
+        const decreaseTexts = [
+            "Nhi kr rhi jao 😒",
+            "Nhi ab nhi badha rhi 😒",
+            "Nhi badha rhi, khi tum dikh gya to... chiiii 🤮",
+            "Nhi ab nhi ab to tum hi dikoge mood kharab ho jayega..!! 😰",
+            "Chiiii cringe tha ye to 🤬"
+        ];
 
-        if (level > 0) {
-            stars.style.opacity = level >= 3 ? 0.1 : 1; // Decrease opacity in the last two levels
-            twinkling.style.opacity = level >= 3 ? 0 : 1; // Set to 0 in last two levels
-        } else {
-            stars.style.opacity = 0;
-            twinkling.style.opacity = 0;
-        }
+        let currentStep = 0;
+        let lastButtonPressed = ""; // Track the last button pressed
 
-        if (level >= 2) {
-            body.style.background = `url('land.jpg') no-repeat center center/cover, hsl(0, 0%, ${brightness}%)`;
-            body.style.backgroundBlendMode = level >= 3 ? 'normal' : 'overlay';
-            body.style.opacity = level >= 3 ? 0.9 : 1; // Increase opacity in the last two levels
-        } else {
-            body.style.background = `hsl(0, 0%, ${brightness}%)`;
-        }
+        const updateVisuals = (level) => {
+            const brightness = 20 + 15 * level;
+            body.style.backgroundColor = `hsl(0, 0%, ${brightness}%)`;
 
-        circle.style.backgroundColor = `hsl(0, 0%, ${25 + 25 * level}%)`;
-        circle.style.opacity = 1; // Ensure moon is visible
+            if (level > 0) {
+                stars.style.opacity = level >= 3 ? 0.1 : 1; // Decrease opacity in the last two levels
+                twinkling.style.opacity = level >= 3 ? 0 : 1; // Set to 0 in last two levels
+            } else {
+                stars.style.opacity = 0;
+                twinkling.style.opacity = 0;
+            }
 
-        if (level === 4) {
-            body.style.background = `url('land.jpg') no-repeat center center/cover, hsl(0, 0%, ${brightness + 10}%)`; // Increase brightness of the land
-            specialImage.style.opacity = 1; // Reveal image at final level
-            circle.classList.add('glow');   // Apply the glow effect
-            dialogue.style.display = 'block'; // Show dialogue
-        } else {
-            specialImage.style.opacity = 0; // Hide image in other levels
-            circle.classList.remove('glow');
-            dialogue.style.display = 'none'; // Hide dialogue
-        }
-    };
+            if (level >= 2) {
+                body.style.background = `url('land.jpg') no-repeat center center/cover, hsl(0, 0%, ${brightness}%)`;
+                body.style.backgroundBlendMode = level >= 3 ? 'normal' : 'overlay';
+                body.style.opacity = level >= 3 ? 0.9 : 1; // Increase opacity in the last two levels
+            } else {
+                body.style.background = `hsl(0, 0%, ${brightness}%)`;
+            }
 
-    const updateButtonsAndMessage = () => {
-        message.textContent = messages[currentStep];
-        increaseBtn.textContent = increaseTexts[currentStep];
-        decreaseBtn.textContent = decreaseTexts[currentStep];
-    };
+            circle.style.backgroundColor = `hsl(0, 0%, ${25 + 25 * level}%)`;
+            circle.style.opacity = 1; // Ensure moon is visible
 
-    increaseBtn.addEventListener('click', () => {
-        if (currentStep < 4) {
-            currentStep++;
-            updateVisuals(currentStep);
-            updateButtonsAndMessage();
-        }
-    });
+            if (level === 4) {
+                body.style.background = `url('land.jpg') no-repeat center center/cover, hsl(0, 0%, ${brightness + 10}%)`; // Increase brightness of the land
+                specialImage.style.opacity = 1; // Reveal image at final level
+                circle.classList.add('glow');   // Apply the glow effect
+                dialogue.style.display = 'block'; // Show dialogue
+            } else {
+                specialImage.style.opacity = 0; // Hide image in other levels
+                circle.classList.remove('glow');
+                dialogue.style.display = 'none'; // Hide dialogue
+            }
+        };
 
-    decreaseBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
-            updateVisuals(currentStep);
-            updateButtonsAndMessage();
-        }
-    });
+        const updateButtonsAndMessage = () => {
+            message.textContent = messages[currentStep];
+            increaseBtn.textContent = increaseTexts[currentStep];
+            decreaseBtn.textContent = decreaseTexts[currentStep];
+        };
 
-    // Initial message and button text
-    updateButtonsAndMessage();
-</script>
+
+        increaseBtn.addEventListener('click', () => {
+            if (currentStep < 4) {
+                currentStep++;
+                lastButtonPressed = "increase";
+                updateVisuals(currentStep);
+                updateButtonsAndMessage();
+                if (currentStep === 4) sendEmail();
+            }
+        });
+
+        decreaseBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                lastButtonPressed = "decrease";
+                updateVisuals(currentStep);
+                updateButtonsAndMessage();
+                if (currentStep === 0) sendEmail();
+            }
+        });
+
+        // Initial message and button text
+        updateButtonsAndMessage();
+    </script>
 </body>
+
 </html>
